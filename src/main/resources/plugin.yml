@@ -1,0 +1,9 @@
+name: Distance
+version: ${project.version}
+main: me.roopekoo.distance.Distance
+api-version: 1.16
+authors: [ Roopekoo ]
+description: Calculates the distance between 2 players
+commands:
+  distance:
+    description: "Calculates the distance between 2 players"
