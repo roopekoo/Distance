@@ -64,7 +64,7 @@ public final class Distance extends JavaPlugin {
     }
 
     private boolean isTargetPlayer(Player target, CommandSender sender) {
-        if (target instanceof Player) {
+        if (target != null) {
             return true;
         }
         else {
