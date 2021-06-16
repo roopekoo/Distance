@@ -69,12 +69,7 @@ public final class Distance extends JavaPlugin {
         }
         else {
             String message = "That player doesn't exist!";
-            if (sender instanceof Player) {
-                sender.sendMessage(message);
-            }
-            else {
-                System.out.println(message);
-            }
+            sender.sendMessage(message);
             return false;
         }
     }
@@ -84,22 +79,12 @@ public final class Distance extends JavaPlugin {
         Location loc2 = target2.getLocation();
         if (loc1.getWorld() != loc2.getWorld()) {
             String message = "Players are not in the same world!";
-            if (sender instanceof Player) {
-                sender.sendMessage(message);
-            }
-            else {
-                System.out.println(message);
-            }
+            sender.sendMessage(message);
         }
         else {
             int distance = (int) loc1.distance(loc2);
             String message = "The distance between " + target1.getName() + " and " + target2.getName() + " is " + distance + " meters.";
-            if (sender instanceof Player) {
-                sender.sendMessage(message);
-            }
-            else {
-                System.out.println(message);
-            }
+            sender.sendMessage(message);
         }
     }
 
