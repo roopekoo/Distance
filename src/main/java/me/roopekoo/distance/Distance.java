@@ -28,6 +28,7 @@ public final class Distance extends JavaPlugin {
                     Player target1 = (Player) sender;
                     Player target2 = Bukkit.getPlayerExact(args[0]);
                     if (isTargetPlayer(target2, sender)) {
+                        assert target2 != null;
                         calcDistance(target1, target2, sender);
                     }
                 }
@@ -35,6 +36,8 @@ public final class Distance extends JavaPlugin {
                     Player target1 = Bukkit.getPlayerExact(args[0]);
                     Player target2 = Bukkit.getPlayerExact(args[1]);
                     if (isTargetPlayer(target1, sender) && isTargetPlayer(target2, sender)) {
+                        assert target1 != null;
+                        assert target2 != null;
                         calcDistance(target1, target2, sender);
                     }
                 }
@@ -47,6 +50,8 @@ public final class Distance extends JavaPlugin {
                     Player target1 = Bukkit.getPlayerExact(args[0]);
                     Player target2 = Bukkit.getPlayerExact(args[1]);
                     if (isTargetPlayer(target1, sender) && isTargetPlayer(target2, sender)) {
+                        assert target1 != null;
+                        assert target2 != null;
                         calcDistance(target1, target2, sender);
                     }
                 }
@@ -96,5 +101,18 @@ public final class Distance extends JavaPlugin {
                 System.out.println(message);
             }
         }
+    }
+
+    private static double FastSqrt(double number) {
+        double x = number;
+        double xhalf = 0.5d*x;
+        long i = Double.doubleToLongBits(x);
+        i = 0x5fe6ec85e7de30daL-(i >> 1);
+        x = Double.longBitsToDouble(i);
+        for(int it = 0; it<4; it++) {
+            x = x*(1.5d-xhalf*x*x);
+        }
+        x *= number;
+        return x;
     }
 }
