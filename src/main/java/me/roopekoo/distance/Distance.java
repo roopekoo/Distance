@@ -82,8 +82,12 @@ public final class Distance extends JavaPlugin {
             sender.sendMessage(message);
         }
         else {
-            int distance = (int) loc1.distance(loc2);
-            String message = "The distance between " + target1.getName() + " and " + target2.getName() + " is " + distance + " meters.";
+            double x = loc1.getX()-loc2.getX();
+            double y = loc1.getY()-loc2.getY();
+            double z = loc1.getZ()-loc2.getZ();
+            double distSqrt = x*x+y*y+z*z;
+            double distance = FastSqrt(distSqrt);
+            String message = "The distance between "+target1.getName()+" and "+target2.getName()+" is "+String.format("%.2f", distance)+" meters.";
             sender.sendMessage(message);
         }
     }
