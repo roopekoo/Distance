@@ -1,11 +1,14 @@
 package me.roopekoo.distance;
 
+import com.sun.tools.sjavac.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Level;
 
 public final class Distance extends JavaPlugin {
 
@@ -23,12 +26,12 @@ public final class Distance extends JavaPlugin {
 	}
 
 	@Override public void onEnable() {
-		System.out.println("The Distance plugin started");
+		Bukkit.getLogger().log(Level.INFO, "The Distance plugin started");
 
 	}
 
 	@Override public void onDisable() {
-		System.out.println("The Distance plugin has been shut down.");
+		Bukkit.getLogger().log(Level.INFO, "The Distance plugin has been shut down.");
 	}
 
 	@Override public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -62,7 +65,8 @@ public final class Distance extends JavaPlugin {
 						calcDistance(target1, target2, sender);
 					}
 				} else {
-					System.out.println("Incorrect amount of arguments! Expected 2, got "+args.length);
+					Bukkit.getLogger()
+					      .log(Level.WARNING, "Incorrect amount of arguments! Expected 2, got "+args.length);
 				}
 			}
 		}
