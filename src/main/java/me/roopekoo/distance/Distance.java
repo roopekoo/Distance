@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 public final class Distance extends JavaPlugin {
@@ -32,6 +34,23 @@ public final class Distance extends JavaPlugin {
 
 	@Override public void onDisable() {
 		Bukkit.getLogger().log(Level.INFO, "The Distance plugin has been shut down.");
+	}
+
+	@Override public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args)
+	{
+		if(command.getName().equalsIgnoreCase("distance"))
+		{
+			if(args.length>2)
+			{
+				return null;
+			}
+			List<String> list = new ArrayList<>();
+			for(Player p: Bukkit.getOnlinePlayers()) {
+				list.add(p.getName());
+			}
+			return list;
+		}
+		return null;
 	}
 
 	@Override public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
